@@ -1,23 +1,23 @@
 import java.util.Scanner;
 public class MyMath {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        System.out.print("a: ");
-        int a = s.nextInt();
-        System.out.print("b: ");
-        int b = s.nextInt();
-        System.out.println("Greatest common factor: " + greatestCommonFactor(a, b));
+        Scanner mathInput = new Scanner(System.in);
+        System.out.print("Number: ");
+        int first = mathInput.nextInt();
+        System.out.print("Number: ");
+        int second = mathInput.nextInt();
+        System.out.println("Greatest common factor: " + greatestCommonFactor(first, second));
     }
-    public static int greatestCommonFactor(int a, int b) {
-        while (b != 0) {
-            if (a > b) {
-                int c = b;
-                b = a % b;
-                a = c;
+    public static int greatestCommonFactor(int num1, int num2) {
+        while (num2 != 0) {
+            if (num1 > num2) {
+                int num3 = num2;
+                num2 = num1 % num2;
+                num1 = num3;
             } else {
-                b = b % a;
+                num2 = num2 % num1;
             }
         }
-        return a;
+        return num1;
     }
 }
