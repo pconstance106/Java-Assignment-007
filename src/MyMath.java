@@ -1,23 +1,26 @@
 import java.util.Scanner;
+
 public class MyMath {
-    public static void main(String[] args) {
-        Scanner mathInput = new Scanner(System.in);
-        System.out.print("Number: ");
-        int first = mathInput.nextInt();
-        System.out.print("Number: ");
-        int second = mathInput.nextInt();
-        System.out.println("Greatest common factor: " + greatestCommonFactor(first, second));
-    }
-    public static int greatestCommonFactor(int num1, int num2) {
-        while (num2 != 0) {
-            if (num1 > num2) {
-                int num3 = num2;
-                num2 = num1 % num2;
-                num1 = num3;
-            } else {
-                num2 = num2 % num1;
-            }
+    public static int gcf(int x, int y) {
+        if (x == 0) {
+            return y;
         }
-        return num1;
+        if (y == 0) {
+            return x;
+        }
+        if (x > y) {
+            return gcf(x % y, y);
+        } else {
+            return gcf(x, y % x);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first number: ");
+        int x = scanner.nextInt();
+        System.out.print("Enter the second number: ");
+        int y = scanner.nextInt();
+        int gcf = gcf(x, y);
+        System.out.println("The greatest common factor of " + x + " and " + y + " is " + gcf);
     }
 }
